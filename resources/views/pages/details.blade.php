@@ -15,7 +15,7 @@
     <main class="flex justify-center flex-col bg-[#14141F] px-[255px] py-20">
         <div class="flex gap-x-[100px] mb-20">
             <div class="w-[690px] h-[690px] rounded-[10px] bg-[#7A798A]">
-                <img class="object-fill w-[690px] h-[690px] rounded-[10px]" src="{{$data->getFirstMediaUrL('items_images')}}" alt="card image">
+                <img class="object-fill w-[690px] h-[690px] rounded-[10px]" src="{{$data->getFirstMediaUrl('items_images') }}" alt="card image">
             </div>
             <div class="flex flex-col max-w-[620px]">
                 <div>
@@ -79,17 +79,17 @@
                 </div>
                 <div class="flex gap-x-3 bg-[#343444] p-3 rounded-2xl max-w-[295px]">
                     <div class="w-[44px] h-[44px] bg-[#C4C4C4] rounded-[15px]">
-                        <img src="#" id="#">
+                        <img src="{{ $data->getFirstMediaUrl('ProfilePic') }}" alt="profile">
                     </div>
                     <div class="flex flex-col">
                         <span class="text-[13px] font-normal text-[#8A8AA0]">Created By</span>
-                        <span class="text-[15px] font-bold">Ralph Garraway</span>
+                        <span class="text-[15px] font-bold">{{$data->user->name}}</span>
                     </div>
                 </div>
-                <p class="text-sm mt-4 mb-5 font-normal text-justify">Habitant sollicitudin faucibus cursus lectus pulvinar dolor non ultrices eget. Facilisi lobortisal morbi fringilla urna amet sed ipsum vitae ipsum malesuada. Habitant sollicitudin faucibus cursus lectus pulvinar dolor non ultrices eget. Facilisi lobortisal morbi fringilla urna amet sed ipsum</p>
+                <p class="text-sm mt-4 mb-5 font-normal text-justify">{{$data->description}}</p>
                 <div class="bg-[#343444] rounded-lg max-w-[295px] py-3 px-6">
                     <span class="font-semibold text-[15px] mr-[83px]">Price</span>
-                    <span class="font-bold text-lg">4.89 eTH</span>
+                    <span class="font-bold text-lg">€ {{$data->price}}</span>
                     <span class="font-normal text-[13px]">= $12.246</span>
                 </div>
             </div>
@@ -134,26 +134,10 @@
                 </svg>
             </div>
             <div class="flex gap-x-[30px] pb-10 max-w-[1410px] overflow-x-scroll">
-                <div>
-                    @foreach($data as $datas)
-                        <x-card2></x-card2>
+                    @foreach($items as $item)
+                        <x-card2 :userImg="$item->getFirstMediaUrL('ProfilePic')" :image="$item->getFirstMediaUrL('items_images')" :title="$item->title" :userName="$item->user->name" :price="$item->price"/>
                     @endforeach
-                </div>
                 <div>
-
-        <div>
-            <button class="font-bold text-[15px] flex gap-x-1.5 text-[#14141F] py-[13px] px-12 bg-white rounded-[30px]">
-                <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.8761 5.39175H14.0558C16.4172 5.39175 18.3337 7.26675 18.3337 9.56675V14.1667C18.3337 16.4668 16.4172 18.3334 14.0558 18.3334H5.94488C3.58349 18.3334 1.66699 16.4668 1.66699 14.1667V9.56675C1.66699 7.26675 3.58349 5.39175 5.94488 5.39175H6.12456C6.14167 4.39175 6.54379 3.45842 7.27103 2.75841C8.00683 2.05008 8.94797 1.69175 10.0089 1.66675C12.1307 1.66675 13.8504 3.33341 13.8761 5.39175ZM8.1694 3.65008C7.69028 4.11675 7.42505 4.73341 7.40794 5.39175H12.5927C12.5671 4.02508 11.4206 2.91675 10.0089 2.91675C9.3501 2.91675 8.66564 3.17508 8.1694 3.65008ZM13.2515 8.60008C13.6108 8.60008 13.8932 8.31675 13.8932 7.97508V7.00841C13.8932 6.66675 13.6108 6.38341 13.2515 6.38341C12.9007 6.38341 12.6098 6.66675 12.6098 7.00841V7.97508C12.6098 8.31675 12.9007 8.60008 13.2515 8.60008ZM7.31379 7.97508C7.31379 8.31675 7.03145 8.60008 6.6721 8.60008C6.32132 8.60008 6.03042 8.31675 6.03042 7.97508V7.00841C6.03042 6.66675 6.32132 6.38341 6.6721 6.38341C7.03145 6.38341 7.31379 6.66675 7.31379 7.00841V7.97508Z" fill="#5142FC"/>
-                </svg>
-                Buy
-            </button>
-        </div>
     </main>
     @include('_partials.footer')
 @endsection

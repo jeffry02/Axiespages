@@ -41,7 +41,7 @@
         </div>
         <div class="flex flex-col">
           <span class="text-[#8A8AA0] text-[13px] font-normal">Current Bid</span>
-          <span class="text-lg font-bold">{{$price}}</span>
+          <span class="text-lg font-bold">€ {{$price}}</span>
         </div>
       </div>
     </div>

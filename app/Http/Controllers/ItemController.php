@@ -22,11 +22,12 @@ class ItemController extends Controller
         $items = Item::query()->where('user_id',$data->user_id)->get();
 
         return view('pages.details', ['data' => $data, 'items'=> $items]);
+
     }
 
     public function create(): View
     {
-       $collections = Collection::all();
+       $collections = Collection::query()->where('user_id', Auth::user()->id)->get();
        $categories = Category::all();
 
         return view('pages.create', ['collections'=>$collections, 'categories'=> $categories]);
