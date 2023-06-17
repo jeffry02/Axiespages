@@ -52,7 +52,7 @@
                     <label for="categories" class="font-bold mb-5 text-xl">categories</label>
                         <select class="bg-[#14141F] outline-none rounded-lg" name="category_id">
                             @foreach($categories as $category)
-                                <option class="font-normal text-[13px] value="{{$category->id}}">{{$category->name}}</option>
+                                <option class="font-normal text-[13px]" value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
                         </select>
                 </div>
