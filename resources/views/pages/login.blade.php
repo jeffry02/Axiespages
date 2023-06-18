@@ -17,7 +17,7 @@
         <div class="w-[690px] mt-[80px] flex flex-col h-[428px] mb-[210px]">
             <div class="flex-col flex text-center">
                 <span class="text-[36px] font-bold">Login to NFTs</span>
-                <a href="#" class="text-[18px] mb-[30px] font-normal mt-[65px]">Don't have an account?</a>
+                <a href="/signup" class="text-[18px] mb-[30px] font-normal mt-[65px]">Don't have an account?</a>
             </div>
             <div class="gap-y-[25px] flex flex-col">
                 <div>

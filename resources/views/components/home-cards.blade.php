@@ -1,9 +1,9 @@
-@props(['itemImg', 'itemTitle', 'user_id', 'itemPrice'])
+@props(['itemImg', 'itemTitle', 'userId', 'itemPrice', 'profilePic'])
 
 <div>
     <div class="rounded-[20px] p-[20px] bg-[#343444] flex flex-col mb-8">
         <div class="bg-[#7A798A] h-[290px] rounded-[20px] mb-[20px] w-[290px]">
-            <img class="w-[290px] h-[290px] " alt="item image" src="{{$itemImg ?? 'unknown'}}"/>
+            <img class="w-[290px] h-[290px] rounded-[20px] object-fill" alt="item image" src="{{$itemImg ?? 'unknown'}}"/>
         </div>
         <div class="mb-[17px]">
             <span class="font-bold text-lg">{{$itemTitle ?? 'unknown'}}</span>
@@ -11,11 +11,11 @@
         <div class="flex justify-between items-center mb-5 border-b-[1px] border-[#14141F]">
             <div class="flex gap-x-3">
                 <div class="bg-[#C4C4C4] w-[44px] h-[44px] rounded-[15px]">
-{{--                    <img src="{{$itemImg}}" alt="Item image">--}}
+                    <img class="w-[44px] h-[44px] rounded-[15px] object-fill" src="{{$profilePic ?? 'unknown'}}" alt="profile">
                 </div>
                 <div class="flex flex-col mb-5">
                     <span class="text-[#8A8AA0] text-[13px] font-normal">Creator</span>
-                    <span class="font-bold text-[15px] text-[#EBEBEB]">{{$user_id ?? 'unknown'}}</span>
+                    <span class="font-bold text-[15px] text-[#EBEBEB]">{{$userId ?? 'unknown'}}</span>
                 </div>
             </div>
             <div>

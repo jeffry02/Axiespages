@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $items = \App\Models\Item::all();
-    return view('pages.home', ['items'=>$items]);
+    $users = \App\Models\User::latest()->take(5)->get();
+    return view('pages.home', ['items'=>$items, 'users' => $users]);
 })->name('dashboard');
 
 Route::middleware('auth')->group(function () {

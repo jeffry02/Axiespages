@@ -1,4 +1,4 @@
-@props(['itemId','itemImg', 'itemTitle', 'user_id', 'itemPrice'])
+@props(['itemId','itemImg', 'itemTitle', 'userId', 'itemPrice', 'profilePic'])
 
 <div>
     <div>
@@ -27,11 +27,11 @@
             <div class="flex justify-between items-center mb-5 border-b-[1px] border-[#14141F]">
                 <div class="flex gap-x-3">
                     <div class="bg-[#C4C4C4] w-[44px] h-[44px] rounded-[15px]">
-                        <img src="#" id="#">
+                        <img class="w-[44px] h-[44px] rounded-[15px] object-fill" src="{{$profilePic ?? 'unknown'}}" alt="profile">
                     </div>
                     <div class="flex flex-col mb-5">
                         <span class="text-[#8A8AA0] text-[13px] font-normal">Creator</span>
-                        <span class="font-bold text-[15px] text-[#EBEBEB]">{{$user_id ?? 'unknown'}}</span>
+                        <span class="font-bold text-[15px] text-[#EBEBEB]">{{$userId ?? 'unknown'}}</span>
                     </div>
                 </div>
                 <div>
