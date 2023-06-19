@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $items = \App\Models\Item::all();
     $users = \App\Models\User::latest()->take(5)->get();
+
+    event(new \App\Events\LikesEvent(5));
+
     return view('pages.home', ['items'=>$items, 'users' => $users]);
 })->name('dashboard');
 

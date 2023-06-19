@@ -424,19 +424,20 @@
     </div>
   </section>
 @include('_partials.footer')
-{{--    <script src="https://js.pusher.com/7.2/pusher.min.js"></script>--}}
-{{--    <script>--}}
+  <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+  <script>
 
-        // Enable pusher logging - don't include this in production
-        // Pusher.logToConsole = true;
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
 
-        // var pusher = new Pusher('6e81a554f62ce9dfa365', {
-        //     cluster: 'us2'
-        // });
+    var pusher = new Pusher('a562ff69b8f29bd1fd1f', {
+      cluster: 'us2'
+    });
 
-        // var channel = pusher.subscribe('my-channel');
-        // channel.bind('my-event', function(data) {
-        //     alert(JSON.stringify(data));
-        // });
-{{--    </script>--}}
+    var channel = pusher.subscribe('notifications-channel');
+    channel.bind('likes', function(data) {
+      // alert(JSON.stringify(data));
+      console.log(data['itemId']);
+    });
+  </script>
 @endsection

@@ -7,7 +7,7 @@
                 <a href="/item?items_id={{$itemId}}">
                 <img class="w-[290px] h-[290px] object-fill rounded-[20px]" alt="item image" src="{{$itemImg ?? 'unknown'}}"/>
                 </a>
-                <div class="absolute items-center pt-[2px] pr-[10px] flex right-[12px] top-[14px] rounded-[10px] bg-[#14141F]">
+                <button class="absolute items-center pt-[2px] pr-[10px] flex right-[12px] top-[14px] rounded-[10px] bg-[#14141F] active:bg-orange-600">
                     <div class="pl-[10px]">
                         <svg
                             width="16"
@@ -19,7 +19,7 @@
                         </svg>
                     </div>
                     <span class="ml-[5px] font-bold text-sm">100</span>
-                </div>
+                </button>
             </div>
             <div class="mb-[17px]">
                 <span class="font-bold text-lg">{{$itemTitle ?? 'unknown'}}</span>
