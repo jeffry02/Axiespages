@@ -3,13 +3,13 @@
 @section('pages')
   @include('_partials.header')
   <div class="h-216px bg-[#14141F] opacity-[0.7] flex flex-col items-center text-[13px] font-normal">
-    <h1 class="text-[48px] mt-[60px] font-bold">Explore 4</h1>
+    <h1 class="text-[48px] mt-[60px] font-bold">Explore</h1>
     <div class="mt-[12px] flex gap-x-[12px] text-[18px] font-normal mb-[60px]">
       <span>Home</span>
       <span>/</span>
       <span>Pages</span>
       <span>/</span>
-      <span>Explore 4</span>
+      <span>Explore</span>
     </div>
   </div>
     <main class="flex justify-center text-[13px] font-normal bg-[#14141F] py-20">
@@ -69,10 +69,11 @@
         </div>
       </div>
 
-{{--        cards--}}
-      <div class="ml-20 justify-center flex flex-col">
-          <div class="flex gap-x-[38px] mb-11">
-            <x-card3 title="pepe"></x-card3>
+      <div class="flex flex-col ml-20 items-center">
+          <div class="flex flex-wrap gap-x-[38px] mb-11 max-w-[1075px] gap-y-11">
+            @foreach($cardInfo as $item)
+              <x-exploreCard :item-img="$item->getFirstMediaUrL('items_images')" :item-title="$item->title" :user-id="$item->user->name" :item-price="$item->price" :profile-pic="$item->user->getFirstMediaUrL('ProfilePic')"/>
+            @endforeach
           </div>
           <div class="mt-9">
           <button class="text-[15px] font-bold py-4 px-10 border-[1px] rounded-[30px]">Load More</button>

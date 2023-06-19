@@ -44,15 +44,15 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $email = $request['email'];
-        $messageData = ['name'=>$request->name, 'email'=>$request->email];
-        Mail::send('emails.welcome', $messageData, function($message)use($email){
-            $message->to($email)->subject('welcome test');
-        });
-
         if (isset($request['ProfilePic'])) {
-            $user->addMediaFromRequest('ProfilePic')->toMediaCollection('ProfilePic'); 
+            $user->addMediaFromRequest('ProfilePic')->toMediaCollection('ProfilePic');
         }
+
+      $email = $request['email'];
+      $messageData = ['name'=>$request->name, 'email'=>$request->email];
+      Mail::send('emails.welcome', $messageData, function($message)use($email){
+        $message->to($email)->subject('welcome test');
+      });
 
         event(new Registered($user));
 

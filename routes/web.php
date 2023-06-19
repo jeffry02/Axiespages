@@ -8,11 +8,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $items = \App\Models\Item::all();
-    $users = \App\Models\User::latest()->take(5)->get();
+    $users = \App\Models\User::latest()->take(6)->get();
+  $collectionName = \App\Models\Collection::where('user_id', 1)->first();
 
-    event(new \App\Events\LikesEvent(5));
+  event(new \App\Events\LikesEvent(5));
 
-    return view('pages.home', ['items'=>$items, 'users' => $users]);
+    return view('pages.home', ['items'=>$items, 'users' => $users, 'collection'=>$collectionName]);
 })->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -20,9 +21,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 Route::get('explore',function (){
-    return view('pages.explore');
+  $cardInfo = \App\Models\Item::all();
+    return view('pages.explore', ['cardInfo'=>$cardInfo]);
 });
+
 Route::resource('collection', CollectionController::class);
 Route::resource('item', ItemController::class);
 Route::resource('user', UserController::class);
