@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Collection;
 use App\Models\Item;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,10 +28,12 @@ class ItemController extends Controller
 
     public function create(): View
     {
-       $collections = Collection::query()->where('user_id', Auth::user()->id)->get();
+      $user_id= Auth::user()->id;
+       $collections = Collection::query()->where('user_id', $user_id)->get();
        $categories = Category::all();
+      $user = User::find($user_id);
 
-        return view('pages.create', ['collections'=>$collections, 'categories'=> $categories]);
+        return view('pages.create', ['collections'=>$collections, 'categories'=> $categories, 'user'=>$user]);
     }
 
     public function store(Request $request): RedirectResponse
