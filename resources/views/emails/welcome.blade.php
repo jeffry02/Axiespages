@@ -21,10 +21,10 @@
   }
 </style>
 <body>
-<h1>Thank you very much {{$request->name}} for subscribing to our website!</h1>
+<h1>Thank you very much for subscribing to our website!</h1>
 
 <div class="text">
-  <p>AXIES is a sales and purchase site where the most important part of this is YOU {{$request->name}},
+  <p>AXIES is a sales and purchase site where the most important part of this is YOU,
   We appreciate that you have chosen our shopping site, I hope you enjoy it and that you help us to continue growing.</p>
   <span>Share the belong link </span><span>"http://Axies.com.ni"</span> <p>with your friends and family, we will thank you very much, In the same way, we share you our social medias</p><span>"https://www.facebook.com/Axies"</span><span>"https://www.instagram.com/Axieshop/"</span>
   <span>So you will be aware of seasonal promotions and discounts.</span>
