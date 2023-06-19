@@ -32,11 +32,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-//        $userEmail = 'mamg.sept30@gmail.com';
-//        Mail::to($userEmail)->send(new WelcomeEmail());
-
-//        event(new MyEvent('hello world'));
-
         return redirect()->intended(RouteServiceProvider::HOME);
 
     }
