@@ -48,16 +48,20 @@ class RegisteredUserController extends Controller
             $user->addMediaFromRequest('ProfilePic')->toMediaCollection('ProfilePic');
         }
 
-      $email = $request['email'];
-      $messageData = ['name'=>$request->name, 'email'=>$request->email];
-      Mail::send('emails.welcome', $messageData, function($message)use($email){
-        $message->to($email)->subject('welcome test');
-      });
-
         event(new Registered($user));
 
         Auth::login($user);
 
+      $email = $request['email'];
+      $messageData = ['name'=>$request->name, 'email'=>$request->email];
+      Mail::send('emails.welcome', $messageData, function($message)use($email){
+        $message->to($email)->subject('welcome test');
+
+
         return redirect(RouteServiceProvider::HOME);
+      });
+
+      return redirect(RouteServiceProvider::HOME);
+
     }
 }
