@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $items = \App\Models\Item::all();
-    $users = \App\Models\User::latest()->take(6)->get();
-  $collectionName = \App\Models\Collection::where('user_id', 1)->first();
+    $users = \App\Models\User::latest()->take(8)->get();
+    $collectionId = \App\Models\Collection::query()->where('user_id', 1)->get();
 
   event(new \App\Events\LikesEvent(5));
 
-    return view('pages.home', ['items'=>$items, 'users' => $users, 'collection'=>$collectionName]);
+    return view('pages.home', ['items'=>$items, 'users' => $users, 'collections'=>$collectionId]);
 })->name('dashboard');
 
 Route::middleware('auth')->group(function () {
